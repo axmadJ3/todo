@@ -5,8 +5,8 @@ class Todo(models.Model):
         verbose_name = 'Заметка'
         verbose_name_plural = 'Заметки'
         
-    title = models.CharField(max_length=255)
-    body = models.TextField()
+    title = models.CharField(max_length=255, verbose_name='Заголовок')
+    body = models.TextField(verbose_name='Текст')
     created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
     is_done = models.BooleanField(default=False, choices=[(True, 'Выполнено'), 

@@ -2,10 +2,21 @@ from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 
 from .models import Todo
+from .forms import AddForm
 
 def home(request):
     todos = Todo.objects.filter(is_done=False).all()
     return render(request, 'index.html', context={'todos': todos})
+
+
+def addTodo(request):
+    if request.method == 'POST':
+        form = AddForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    form = AddForm()
+    return render(request, 'addTodo.html', context={'form': form})
 
 
 def completed_todos(request):
