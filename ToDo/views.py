@@ -6,7 +6,7 @@ from .forms import AddForm
 
 def home(request):
     todos = Todo.objects.filter(is_done=False).all()
-    return render(request, 'index.html', context={'todos': todos})
+    return render(request, 'ToDo/index.html', context={'todos': todos})
 
 
 def addTodo(request):
@@ -16,12 +16,12 @@ def addTodo(request):
             form.save()
             return redirect('home')
     form = AddForm()
-    return render(request, 'ToDo/addTodo.html', context={'form': form})
+    return render(request, 'ToDo/addtodo.html', context={'form': form})
 
 
 def completed_todos(request):
     todos = Todo.objects.filter(is_done=True).all()
-    return render(request, 'index.html', context={'todos': todos})
+    return render(request, 'ToDo/index.html', context={'todos': todos})
 
 
 def execute_completed(request, pk):
