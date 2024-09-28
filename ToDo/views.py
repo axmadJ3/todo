@@ -16,7 +16,7 @@ def addTodo(request):
             form.save()
             return redirect('home')
     form = AddForm()
-    return render(request, 'addTodo.html', context={'form': form})
+    return render(request, 'ToDo/addTodo.html', context={'form': form})
 
 
 def completed_todos(request):
